@@ -59,63 +59,34 @@ body {
     transform: rotateY(-180deg);
 }
 
-/* --- The new layout for the card's content --- */
-/* Update the .overlay to position its contents relative to it */
+/* --- New and improved card front layout with Flexbox --- */
 .overlay {
     background-color: rgba(255, 255, 255, 0.5);
-    position: relative; /* This is key! It establishes a positioning context for its children */
     width: 100%;
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between; /* This is key! It pushes content to top, middle, and bottom */
     align-items: center;
 }
 
-/* Update the .button-container to be positioned at the bottom */
-.button-container {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    text-align: center;
-}
-
-/* These containers are no longer using absolute positioning */
+/* These containers are no longer needed as they are handled by the new Flexbox model */
 .photo-gallery-container,
 .card-text-content,
 .button-container {
-    position: static;
-    transform: none;
-    width: 100%;
-}
-
-/* Add margins for spacing */
-.photo-gallery-container {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.card-text-content {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.button-container {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    /* No positioning or margins needed, Flexbox handles them */
 }
 
 /* --- Photo Gallery Styles --- */
 .photo-gallery {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around; /* Distributes photos evenly */
     align-items: center;
-    gap: 10px;
+    flex-wrap: wrap; /* Allows photos to wrap to the next line on small screens */
+    width: 100%;
+    margin: 20px 0; /* Add some vertical space */
 }
 
 .gallery-photo-link {
@@ -139,13 +110,15 @@ body {
 h1 {
     color: #ff1493;
     font-size: 1.8em;
+    text-align: center;
     margin: 0;
 }
 
 p {
     color: #333;
     font-size: 0.9em;
-    margin: 0;
+    text-align: center;
+    margin-bottom: 0;
 }
 
 #openCardBtn {
@@ -163,7 +136,7 @@ p {
     background-color: #ff1493;
 }
 
-/* --- Cake and Knife Styles --- */
+/* --- Cake and Knife Styles (unchanged from last version) --- */
 .cake-container {
     position: relative;
     width: 90%;
@@ -280,4 +253,3 @@ p {
     color: #bbb;
     text-decoration: none;
 }
-
