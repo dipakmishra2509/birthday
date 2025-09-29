@@ -90,3 +90,182 @@ body {
 
 .card-text-content {
     margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* --- Photo Gallery Styles --- */
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.gallery-photo-link {
+    display: block;
+}
+
+.gallery-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ff69b4;
+    transition: transform 0.3s ease;
+}
+
+.gallery-photo:hover {
+    transform: scale(1.05);
+}
+
+/* --- Text Styles --- */
+h1 {
+    color: #ff1493;
+    font-size: 1.8em;
+    margin: 0;
+}
+
+p {
+    color: #333;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+#openCardBtn {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#openCardBtn:hover {
+    background-color: #ff1493;
+}
+
+/* --- Cake and Knife Styles --- */
+.cake-container {
+    position: relative;
+    width: 90%;
+    max-width: 280px;
+    cursor: pointer;
+    overflow: visible; 
+}
+
+#birthdayCake {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.cake-cut {
+    transform: scale(0.98);
+    filter: brightness(0.9);
+}
+
+.cake-text {
+    margin-top: 20px;
+    color: #333;
+    font-size: 1em;
+}
+
+.knife-handle {
+    position: absolute;
+    bottom: 50%;
+    left: 110%;
+    width: 30px;
+    height: 120px;
+    background: linear-gradient(to right, #ccc, #777);
+    border-radius: 5px 5px 3px 3px / 80% 80% 20% 20%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transform: rotate(45deg);
+    transform-origin: 0% 100%;
+    transition: all 0.6s ease-out;
+    z-index: 10;
+    opacity: 0;
+}
+
+.knife-animate {
+    left: 60%;
+    transform: rotate(-10deg);
+    opacity: 1;
+}
+
+.knife-cut-animation {
+    animation: cut-cake 0.8s forwards;
+}
+
+@keyframes cut-cake {
+    0% { transform: rotate(-10deg); left: 60%; }
+    20% { transform: rotate(-25deg); left: 55%; bottom: 45%; }
+    50% { transform: rotate(-45deg); left: 45%; bottom: 55%; filter: brightness(0.8); }
+    80% { transform: rotate(-30deg); left: 40%; bottom: 50%; }
+    100% { transform: rotate(-10deg); left: 35%; bottom: 50%; filter: brightness(0.7); }
+}
+
+#candle-flame {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 10px;
+    height: 20px;
+    background-color: orange;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform: translateX(-50%);
+    animation: flicker 1s infinite alternate;
+    box-shadow: 0 0 5px yellow, 0 0 10px orange;
+    z-index: 5;
+}
+
+@keyframes flicker {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* --- Lightbox for full-screen image view --- */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+}
