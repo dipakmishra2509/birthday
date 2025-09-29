@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="birthdaySong" src="happy_birthday.mp3" preload="auto" loop></audio>
+
+    <div class="card-container">
+        <div class="card">
+            <div class="card-front">
+                <div class="overlay">
+                    <div class="photo-gallery-container">
+                        <div class="photo-gallery">
+                            <a href="girl_photo_1.jpg" class="gallery-photo-link">
+                                <img class="gallery-photo" src="girl_photo_1.jpg" alt="Birthday Girl's Photo 1">
+                            </a>
+                            <a href="girl_photo_2.jpg" class="gallery-photo-link">
+                                <img class="gallery-photo" src="girl_photo_2.jpg" alt="Birthday Girl's Photo 2">
+                            </a>
+                            <a href="girl_photo_3.jpg" class="gallery-photo-link">
+                                <img class="gallery-photo" src="girl_photo_3.jpg" alt="Birthday Girl's Photo 3">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-text-content">
+                        <h1>Happy Birthday Shubhra!</h1>
+                        <p>Wishing you all the happiness in the world.</p>
+                    </div>
+                    <div class="button-container">
+                        <button id="openCardBtn">Open Card</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-back">
+                <div class="cake-container">
+                    <img id="birthdayCake" src="cake.png" alt="Birthday Cake">
+                    <div id="candle-flame"></div>
+                    <div class="knife-handle" id="knife"></div>
+                </div>
+                <div class="cake-text">
+                    <p>Click the cake to "cut" it!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
