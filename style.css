@@ -60,17 +60,28 @@ body {
 }
 
 /* --- The new layout for the card's content --- */
+/* Update the .overlay to position its contents relative to it */
 .overlay {
     background-color: rgba(255, 255, 255, 0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
+    position: relative; /* This is key! It establishes a positioning context for its children */
     width: 100%;
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Update the .button-container to be positioned at the bottom */
+.button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
 }
 
 /* These containers are no longer using absolute positioning */
@@ -269,3 +280,4 @@ p {
     color: #bbb;
     text-decoration: none;
 }
+
