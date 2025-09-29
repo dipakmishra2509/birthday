@@ -59,216 +59,34 @@ body {
     transform: rotateY(-180deg);
 }
 
-/* --- Overlay to make text readable on the background photo --- */
+/* --- The new layout for the card's content --- */
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* --- Positioning for the photo gallery, text, and button --- */
-.photo-gallery-container {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+/* These containers are no longer using absolute positioning */
+.photo-gallery-container,
+.card-text-content,
+.button-container {
+    position: static;
+    transform: none;
     width: 100%;
-    text-align: center;
+}
+
+/* Add margins for spacing */
+.photo-gallery-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .card-text-content {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 100%;
-}
-
-.button-container {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    text-align: center;
-}
-
-/* --- Photo Gallery Styles --- */
-.photo-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-.gallery-photo-link {
-    display: block;
-}
-
-.gallery-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #ff69b4;
-    transition: transform 0.3s ease;
-}
-
-.gallery-photo:hover {
-    transform: scale(1.05);
-}
-
-/* --- Text Styles --- */
-h1 {
-    color: #ff1493;
-    font-size: 2em;
-    margin: 0;
-}
-
-p {
-    color: red;
-    font-size: 2em;
-    margin-bottom: 0;
-}
-
-#openCardBtn {
-    background-color: #ff69b4;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.1em;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#openCardBtn:hover {
-    background-color: #ff1493;
-}
-
-/* --- Cake and Knife Styles --- */
-.cake-container {
-    position: relative;
-    width: 90%;
-    max-width: 280px;
-    cursor: pointer;
-    /* Adding some overflow visible to allow knife to go slightly outside */
-    overflow: visible; 
-}
-
-#birthdayCake {
-    width: 100%;
-    height: auto;
-    transition: transform 0.5s ease;
-}
-
-/* This class will be added when the cake is "cut" */
-.cake-cut {
-    transform: scale(0.98); /* Slight shrink */
-    filter: brightness(0.9); /* Slightly darken to simulate cutting */
-}
-
-.cake-text {
-    margin-top: 20px;
-    color: #333;
-    font-size: 1em;
-}
-
-.knife-handle {
-    position: absolute;
-    bottom: 50%; /* Position knife vertically centered on the cake initially */
-    left: 110%; /* Start off-screen to the right */
-    width: 30px; /* Make knife smaller and more realistic */
-    height: 120px;
-    background: linear-gradient(to right, #ccc, #777); /* Blade color */
-    border-radius: 5px 5px 3px 3px / 80% 80% 20% 20%; /* Shape of a knife handle/blade */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    transform: rotate(45deg); /* Initial rotation */
-    transform-origin: 0% 100%; /* Rotate from bottom-left (tip of the blade) */
-    transition: all 0.6s ease-out; /* Smooth entry transition */
-    z-index: 10;
-    opacity: 0; /* Initially hidden */
-}
-
-/* This class brings the knife onto the cake */
-.knife-animate {
-    left: 60%; /* Position knife over the cake */
-    transform: rotate(-10deg); /* Slightly rotated for natural holding */
-    opacity: 1;
-}
-
-/* This animation simulates the cutting action */
-.knife-cut-animation {
-    animation: cut-cake 0.8s forwards; /* Increased duration for smoother cut */
-}
-
-@keyframes cut-cake {
-    0% { transform: rotate(-10deg); left: 60%; } /* Start position */
-    20% { transform: rotate(-25deg); left: 55%; bottom: 45%; } /* Downward motion */
-    50% { transform: rotate(-45deg); left: 45%; bottom: 55%; filter: brightness(0.8); } /* Deeper cut */
-    80% { transform: rotate(-30deg); left: 40%; bottom: 50%; } /* Lifting slightly */
-    100% { transform: rotate(-10deg); left: 35%; bottom: 50%; filter: brightness(0.7); } /* Resting after cut */
-}
-
-/* --- The rest of your CSS for #candle-flame remains unchanged --- */
-#candle-flame {
-    position: absolute;
-    top: -15px; /* Adjust based on your cake image */
-    left: 50%;
-    width: 10px;
-    height: 20px;
-    background-color: orange;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    transform: translateX(-50%);
-    animation: flicker 1s infinite alternate;
-    box-shadow: 0 0 5px yellow, 0 0 10px orange;
-    z-index: 5;
-}
-
-@keyframes flicker {
-    from { opacity: 1; transform: scale(1); }
-    to { opacity: 0.8; transform: scale(1.05); }
-}
-/* --- Lightbox for full-screen image view --- */
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.9);
-}
-
-.lightbox-content {
-    margin: auto;
-    display: block;
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #bbb;
-    text-decoration: none;
-}
+    margin-top: 10px;
